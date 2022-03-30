@@ -6,4 +6,7 @@
 class GuessWho:
     """
     Basic class to share
+    
+    Attributes:
+    
     """
