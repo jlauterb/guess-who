@@ -1,4 +1,4 @@
-"""INST326 Final Project Group (pp)enguin """
+"""INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
 
 
 
@@ -11,4 +11,3 @@ class GuessWho:
     
     
     """
-    
