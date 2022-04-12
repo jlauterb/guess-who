@@ -1,7 +1,4 @@
-"""INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John 
-3/30/2022
-Janet's cooler than u guys llololoolo
-"""
+"""INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
 
 
 
@@ -11,6 +8,16 @@ class GuessWho:
     Basic class to share
     
     Attributes:
-    
-    
+
     """
+    
+    def __init__(self):
+        self.board = {"Celebrity 1": ("Aspect 1","Aspect 2"),
+                      "Celebrity 2": ("Aspect 1","Aspect 2"),
+                      "Celebrity 3": ("Aspect 1","Aspect 2"),
+                      "Celebrity 4": ("Aspect 1","Aspect 2"),
+                      "Celebrity 5": ("Aspect 1","Aspect 2"),
+                      "Celebrity 6": ("Aspect 1","Aspect 2"),
+                      }
+        self.player = 0
+    
