@@ -21,3 +21,9 @@ class GuessWho:
                       }
         self.player = 0
     
+    
+    
+    
+
+if __name__ == "__main__":
+    # Line to run the program
