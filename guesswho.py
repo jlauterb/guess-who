@@ -56,9 +56,24 @@ class GuessWho:
         self.celebrities_needed = [player1.assigned_celebrity,
                                    player2.assigned_celebrity]
     
-
-    def turn(self):
+    def final_q(self, player):
+        return "ur mom"
+        
+    def trait_q(self, player):
+        return "deez nuts"
+    
+    def turn(self, player):
         #represents one players turn
+        question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
+        if question_type == "0":
+            #call trait question method
+            trait_q(player)
+        else:
+            #call final question method
+            final_q(player)
+    
+    
+    
 
 if __name__ == "__main__":
     #Line to run the program
