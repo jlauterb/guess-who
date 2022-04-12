@@ -57,7 +57,8 @@ class GuessWho:
                                    player2.assigned_celebrity]
     
 
-    
+    def turn(self):
+        #represents one players turn
 
 if __name__ == "__main__":
     #Line to run the program
