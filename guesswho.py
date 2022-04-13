@@ -51,6 +51,15 @@ class GuessWho:
     """
     
     def __init__(self, player1, player2):
+        """initializes the attributes.
+
+        Args:
+            player1(str): represents the first player.
+            player2(str): represents the second player.
+
+        Side effects:
+            opens a file containing the names of the celebrities.
+        """
         #List of the players
         self.celebrities = []
         with open(filename, "r", encoding = "utf-8") as file:
