@@ -52,9 +52,16 @@ class GuessWho:
     
     def __init__(self, player1, player2):
         #List of the players
+        self.celebrities = []
+        with open(filename, "r", encoding = "utf-8") as file:
+            for line in file:
+                self.celebrities = self.celebrities_needed
+
+
         self.players = [player1, player2]
         self.celebrities_needed = [player1.assigned_celebrity,
                                    player2.assigned_celebrity]
+
     
     def final_q(self, player):
         return "ur mom"
