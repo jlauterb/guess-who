@@ -86,17 +86,18 @@ class GuessWho:
 
     
     def final_q(self, player):
-        """
+        """Represents the final question that the players may ask.
         """
         return player
         
     def trait_q(self, player):
-        """
+        """Questions related to traits that the celebrities may have.
+
         """
         return player
     
     def turn(self, player):
-        """
+        """This method represents the turns between each player.
         """
         #represents one players turn
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
