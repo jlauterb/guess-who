@@ -105,11 +105,18 @@ class GuessWho:
     
     def final_q(self, player):
         """Represents the final question that the players may ask.
+
+        Returns:
+            the player object
+
         """
         return player
         
     def trait_q(self, player):
         """Questions related to traits that the celebrities may have.
+
+        Returns:
+            the player object
         """
 
         return player
