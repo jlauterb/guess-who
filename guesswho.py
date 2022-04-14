@@ -92,6 +92,14 @@ class GuessWho:
         if question_type != "0" | question_type != "1":
             raise ValueError("Sorry, please input a 0 or a 1")
         
+    def winner(self):
+        if final_g(player1) == player1.assigned_celebrity:
+            print(f"{player1} wins with the guess of {player1.assigned_celebrity}!")
+        elif final_g(player2) == player2.assigned_celebrity:
+            print(f"{player2} wins with the guess of {player2.assigned_celebrity}!")
+        else
+            print(f"{player1} and {player2} both lost!")
+        
     
     
     
