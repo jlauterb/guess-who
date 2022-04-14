@@ -82,8 +82,8 @@ class GuessWho:
     """Guess Who game.
     
     Attributes:
-    players (list): list of player objects
-    celebrities ()
+    players(list): list of player objects
+    celebrities_needed(list): description of the player's celebrity the opponent needs to guess.
 
     """
     
