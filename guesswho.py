@@ -1,6 +1,8 @@
 """INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
 import random
 import csv
+from argparse import ArgumentParser
+import sys
 
 class Board():
     """Representation of Guess Who board.
@@ -117,10 +119,28 @@ class GuessWho:
             print(f"{player2} wins with the guess of {player2.assigned_celebrity}!")
         else:
             print(f"{player1} and {player2} both lost!")
-        
+
+def parse_args(arglist):
+    """Parse command-line arguments. 
+    Expect one mandatory argument, the path to a file of celebrity names and attributes.
+
+    Args:
+        arglist (list of str): command-line arguments
+
+    Returns:
+        namespace: an object with one attribute, file, containing a string.
+    """
+    parser = ArgumentParser()
+    parser.add_argument("filepath", help="path to csv file with celebrity names and attributes")
+    return parser.parse_args(arglist)
+
 if __name__ == "__main__":
     #Line to run the program
-    Board(filename)
+    
+    args = parse_args(sys.args[1:])
+    
+    Board(args)
+    
     player1 = Player(input("Player 1 enter your name:"))
     player2 = Player(input("Player 2 enter your name:"))
     GuessWho(player1, player2)
