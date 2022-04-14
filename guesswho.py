@@ -1,12 +1,36 @@
 """INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
-from multiprocessing.sharedctypes import Value
 import random
-
+import csv
+class Board():
+    """Representation of Guess Who board.
+    
+    Attributes:
+    name_board(dict): Contains celebrity names and attributes
+    """
+    
+    def __init__(self, file):
+        
+        
+    
 class Player():
     """Class that represents a player in the guess who game
+    
+    Attributes:
+    name (str): Name of the player
+    board (dict): Contains celebrity names and attributes
+    rejected(list): Contains celebrities that are not the assigned celebrity
+    assigned_celebrity(str): The celebrity that an opponent will try to guess
     """
     
     def __init__(self, name):
+        """Initalizes the Player class.
+        
+        Args:
+        name (str): Name of the player
+        
+        Side Effects:
+        Changes the classes attributes
+        """
         #Player's name
         self.name = name
         """
@@ -44,10 +68,11 @@ class Player():
 
 
 class GuessWho:
-    """
-    Basic class to share
+    """Guess Who game.
     
     Attributes:
+    players (list): list of player objects
+    celebrities ()
 
     """
     
@@ -108,12 +133,9 @@ class GuessWho:
         else:
             print(f"{player1} and {player2} both lost!")
         
-    
-    
-    
-
 if __name__ == "__main__":
     #Line to run the program
+    
     player1 = Player(input("Player 1 enter your name:"))
     player2 = Player(input("Player 2 enter your name:"))
     GuessWho(player1, player2)
