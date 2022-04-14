@@ -1,4 +1,5 @@
 """INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
+from multiprocessing.sharedctypes import Value
 import random
 
 class Player():
@@ -87,6 +88,10 @@ class GuessWho:
         else:
             #call final question method
             final_q(player)
+        
+        if question_type != "0" | question_type != "1":
+            raise ValueError("Sorry, please input a 0 or a 1")
+        
     
     
     
