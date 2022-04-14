@@ -1,6 +1,7 @@
 """INST326 Final Project Group (pp)enguin for Sana, Janet, Sierra, and John """
 import random
 import csv
+
 class Board():
     """Representation of Guess Who board.
     
@@ -8,7 +9,23 @@ class Board():
     name_board(dict): Contains celebrity names and attributes
     """
     
-    def __init__(self, file):
+    def __init__(self, filename):
+        """Initalizes the board from a csv file
+
+        Args:
+            filename (str): File path to csv file
+        """
+        brd = {}
+        #Hopefully, this will turn a csv file into a dict where the first column is a key,
+        #The rest of the columns will turn into 1 tuple as the value of the key.
+        with open(filename, newline = ' ') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                name = row.pop(0)
+                data = tuple()
+                [data.add(col) for col in row]
+            brd[name] = data
+                    
         
         
     
@@ -86,12 +103,6 @@ class GuessWho:
         Side effects:
             opens a file containing the names of the celebrities.
         """
-        #List of the players
-        self.celebrities = []
-        with open(filename, "r", encoding = "utf-8") as file:
-            for line in file:
-                self.celebrities = self.celebrities_needed
-
 
         self.players = [player1, player2]
         self.celebrities_needed = [player1.assigned_celebrity,
