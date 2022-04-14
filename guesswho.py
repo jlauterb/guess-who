@@ -141,6 +141,9 @@ class GuessWho:
         
     def winner(self):
         """This method determines who wins in the game, if any player guesses the celebrity correctly.
+        
+        Side effects:
+            prints if either player1 wins, player2 wins, or if both players lose
         """
         if final_q(player1) == player1.assigned_celebrity:
             print(f"{player1} wins with the guess of {player1.assigned_celebrity}!")
