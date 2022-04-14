@@ -98,6 +98,9 @@ class GuessWho:
     
     def turn(self, player):
         """This method represents the turns between each player.
+
+        Raises:
+            ValueError for invalid question type.
         """
         #represents one players turn
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
