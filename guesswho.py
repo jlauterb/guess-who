@@ -51,7 +51,7 @@ class GuessWho:
 
     """
     
-    def __init__(self, player1, player2):
+    def __init__(self, player1, player2, filename):
         """initializes the attributes.
 
         Args:
@@ -74,12 +74,18 @@ class GuessWho:
 
     
     def final_q(self, player):
-        return "ur mom"
+        """
+        """
+        return player
         
     def trait_q(self, player):
-        return "deez nuts"
+        """
+        """
+        return player
     
     def turn(self, player):
+        """
+        """
         #represents one players turn
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
         if question_type == "0":
@@ -93,11 +99,13 @@ class GuessWho:
             raise ValueError("Sorry, please input a 0 or a 1")
         
     def winner(self):
-        if final_g(player1) == player1.assigned_celebrity:
+        """
+        """
+        if final_q(player1) == player1.assigned_celebrity:
             print(f"{player1} wins with the guess of {player1.assigned_celebrity}!")
-        elif final_g(player2) == player2.assigned_celebrity:
+        elif final_q(player2) == player2.assigned_celebrity:
             print(f"{player2} wins with the guess of {player2.assigned_celebrity}!")
-        else
+        else:
             print(f"{player1} and {player2} both lost!")
         
     
