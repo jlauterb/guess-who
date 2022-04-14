@@ -27,7 +27,25 @@ class Board():
                 data = tuple()
                 [data.add(col) for col in row]
             brd[name] = data
-                    
+    
+    def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end="!"):
+        """greets the players at the start of the game.
+
+        Args:
+            game(str): the name of the game
+            end(str): ends the print statement with an exclamation mark
+            coders(str): the names of the people in our group
+            
+        Side effects:
+            a greeting to begin the game
+
+        """
+        print("Hello, and welcome to the game of", game, "coded by", coders)
+
+
+    print(greeting())
+
+            
         
         
     
@@ -92,8 +110,8 @@ class GuessWho:
         
     def trait_q(self, player):
         """Questions related to traits that the celebrities may have.
-
         """
+
         return player
     
     def turn(self, player):
