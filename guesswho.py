@@ -76,6 +76,15 @@ class Player():
         self.rejected = []
         #Player's celebrity that another player will try to guess
         self.assigned_celebrity = random.choice(self.board)
+        
+        
+    def __str__(self):
+        """Gives the name of the player when called.
+
+        Returns:
+            name(str): player's name
+        """
+        return self.name
 
 
 class GuessWho:
@@ -87,7 +96,7 @@ class GuessWho:
 
     """
     
-    def __init__(self, player1, player2, filename):
+    def __init__(self, player1, player2):
         """initializes the attributes.
 
         Args:
@@ -97,10 +106,7 @@ class GuessWho:
         Side effects:
             opens a file containing the names of the celebrities.
         """
-
         self.players = [player1, player2]
-        self.celebrities_needed = [player1.assigned_celebrity,
-                                   player2.assigned_celebrity]
 
     
     def final_q(self, player):
@@ -110,7 +116,9 @@ class GuessWho:
             the player object
 
         """
-        return player
+        response = input("Enter your celebrity guess:")
+        return (response == self.players[player].assigned_celebrity)
+        
         
     def trait_q(self, player):
         """Questions related to traits that the celebrities may have.
@@ -118,7 +126,7 @@ class GuessWho:
         Returns:
             the player object
         """
-
+        
         return player
     
     def turn(self, player):
@@ -131,23 +139,25 @@ class GuessWho:
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
         if question_type == "0":
             #call trait question method
-            trait_q(player)
+            self.trait_q(player)
         else:
             #call final question method
-            final_q(player)
+            self.winner(player)
         
         if question_type != "0" | question_type != "1":
             raise ValueError("Sorry, please input a 0 or a 1")
         
-    def winner(self):
+    def winner(self, player):
         """This method determines who wins in the game, if any player guesses the celebrity correctly.
         
         Side effects:
             prints if either player1 wins, player2 wins, or if both players lose
         """
-        if final_q(player1) == player1.assigned_celebrity:
-            print(f"{player1} wins with the guess of {player1.assigned_celebrity}!")
-        elif final_q(player2) == player2.assigned_celebrity:
+        curr_player = self.players[player]
+        if self.final_q(player):
+            print(f"{str(curr_player)} wins with the guess of {curr_player.assigned_celebrity}!")
+            
+        elif self.final_q(player):
             print(f"{player2} wins with the guess of {player2.assigned_celebrity}!")
         else:
             print(f"{player1} and {player2} both lost!")
@@ -171,8 +181,8 @@ if __name__ == "__main__":
     
     args = parse_args(sys.args[1:])
     
-    Board(args)
+    celebs = Board(args)
     
-    player1 = Player(input("Player 1 enter your name:"))
-    player2 = Player(input("Player 2 enter your name:"))
+    player1 = Player(input("Player 1 enter your name:"),celebs)
+    player2 = Player(input("Player 2 enter your name:"),celebs)
     GuessWho(player1, player2)
