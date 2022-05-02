@@ -134,29 +134,29 @@ class GuessWho:
                 "Presenting, Eye Color, Hair Color, Hair Length, Controversy, "
                 + "and Height): ").upper()
         if category_response == "INDUSTRY":
-            choice_response = input("Pick a choice: Music, "
-                                    + "Reality, Acting").upper()
+            choice_response = input("Pick a choice (Music, "
+                                    + "Reality, Acting): ").upper()
             category_response = 0
         elif category_response == "FACIAL HAIR":
-            choice_response = input("Pick a choice: No Facial Hair, Beard, Goatee").upper()
+            choice_response = input("Pick a choice (No Facial Hair, Beard, Goatee): ").upper()
             category_response = 1
         elif category_response == "PRESENTING":
-            choice_response = input("Pick a choice: Male, Female").upper()
+            choice_response = input("Pick a choice (Male, Female): ").upper()
             category_response = 2
         elif category_response == "EYE COLOR":
-            choice_response = input("Pick a choice: Brown, Hazel, Green, Blue, Black").upper()
+            choice_response = input("Pick a choice (Brown, Hazel, Green, Blue, Black): ").upper()
             category_response = 3
         elif category_response == "HAIR COLOR":
-            choice_response = input("Pick a choice: Black, Brown, Blond, Ginger").upper()
+            choice_response = input("Pick a choice (Black, Brown, Blond, Ginger): ").upper()
             category_response = 4
         elif category_response == "HAIR LENGTH":
-            choice_response = input("Pick a choice: Short, Medium, Long").upper()
+            choice_response = input("Pick a choice (Short, Medium, Long): ").upper()
             category_response = 5
         elif category_response == "CONTROVERSY":
-            choice_response = input("Pick a choice: Controversial, Not Controversial").upper()
+            choice_response = input("Pick a choice (Controversial, Not Controversial): ").upper()
             category_response = 6
         elif category_response == "HEIGHT":
-            choice_response = input("Pick a choice: Short, Average, Tall").upper()
+            choice_response = input("Pick a choice (Short, Average, Tall): ").upper()
             category_response = 7
         
         temp_brd = self.players[player].board
