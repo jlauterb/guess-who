@@ -234,6 +234,6 @@ if __name__ == "__main__":
     
     celebs = Board(args.filepath)
     print(celebs.board)
-    player1 = Player(input("Player 1 enter your name:"),celebs.board)
-    player2 = Player(input("Player 2 enter your name:"),celebs.board)
+    player1 = Player(input("Player 1 enter your name: \n"),celebs.board)
+    player2 = Player(input("Player 2 enter your name: \n"),celebs.board)
     GuessWho(player1, player2)
