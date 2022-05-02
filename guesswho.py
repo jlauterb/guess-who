@@ -17,16 +17,16 @@ class Board():
         Args:
             filename (str): File path to csv file
         """
-        self.brd = {}
+        self.board = {}
         #Hopefully, this will turn a csv file into a dict where the first column is a key,
         #The rest of the columns will turn into 1 tuple as the value of the key.
-        with open(filename, newline = ' ') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                name = row.pop(0)
-                data = tuple()
-                [data.add(col) for col in row]
-            self.brd[name] = data
+        #with open(filename, newline = ' ') as file:
+        reader = csv.reader(filename)
+        for row in reader:
+            name = row.pop(0)
+            data = tuple()
+            [data.add(col) for col in row]
+        self.board[name] = data
         print(self.greeting())
         
     
@@ -79,7 +79,7 @@ class Player():
         #Player's list of celebrities it could not be
         self.rejected = []
         #Player's celebrity that another player will try to guess
-        self.assigned_celebrity = random.choice(self.board)
+        self.assigned_celebrity = random.choice(list(self.board.keys()))
         
         
     def __str__(self):
@@ -231,8 +231,8 @@ if __name__ == "__main__":
     
     args = parse_args(sys.argv[1:])
     
-    celebs = Board(args)
+    celebs = Board(args.filepath)
     
-    player1 = Player(input("Player 1 enter your name:"),celebs)
-    player2 = Player(input("Player 2 enter your name:"),celebs)
+    player1 = Player(input("Player 1 enter your name:"),celebs.board)
+    player2 = Player(input("Player 2 enter your name:"),celebs.board)
     GuessWho(player1, player2)
