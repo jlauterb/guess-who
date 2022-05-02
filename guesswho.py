@@ -111,6 +111,7 @@ class GuessWho:
             opens a file containing the names of the celebrities.
         """
         self.players = [player1, player2]
+        self.turn(0)
 
     
     def final_q(self, player):
