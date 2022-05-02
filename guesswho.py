@@ -26,7 +26,7 @@ class Board():
             name = row.pop(0)
             data = tuple()
             [data.add(col) for col in row]
-        self.board[name] = data
+            self.board[name] = data
         print(self.greeting())
         
     
@@ -130,9 +130,9 @@ class GuessWho:
         Returns:
             the player object
         """
-        category_response = input("Pick a category: Industry, Facial Hair, " +
+        category_response = input("Pick a category (Industry, Facial Hair, " +
                 "Presenting, Eye Color, Hair Color, Hair Length, Controversy, "
-                + "and Height").upper()
+                + "and Height): ").upper()
         if category_response == "INDUSTRY":
             choice_response = input("Pick a choice: Music, "
                                     + "Reality, Acting").upper()
@@ -173,11 +173,11 @@ class GuessWho:
         """This method represents the turns between each player.
 
         """
-        question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
+        question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb): ")
         
         #Invalid response will call the method again for the same player
-        if question_type != "0" | question_type != "1":
-            self.turn(player)
+        #if (question_type != "0" or question_type != "1"):
+           # self.turn(player)
          
         #call trait question method   
         if question_type == "0":
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     
     celebs = Board(args.filepath)
-    
+    print(celebs.board)
     player1 = Player(input("Player 1 enter your name:"),celebs.board)
     player2 = Player(input("Player 2 enter your name:"),celebs.board)
     GuessWho(player1, player2)
