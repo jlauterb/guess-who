@@ -17,7 +17,7 @@ class Board():
         Args:
             filename (str): File path to csv file
         """
-        brd = {}
+        self.brd = {}
         #Hopefully, this will turn a csv file into a dict where the first column is a key,
         #The rest of the columns will turn into 1 tuple as the value of the key.
         with open(filename, newline = ' ') as file:
@@ -26,7 +26,7 @@ class Board():
                 name = row.pop(0)
                 data = tuple()
                 [data.add(col) for col in row]
-            brd[name] = data
+            self.brd[name] = data
     
     def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end="!"):
         """greets the players at the start of the game.
@@ -41,6 +41,10 @@ class Board():
 
         """
         print("Hello, and welcome to the game of", game, "coded by", coders)
+        
+        
+    def __str__(self):
+        return str(self.brd.keys)
 
 
     print(greeting())
@@ -113,10 +117,9 @@ class GuessWho:
         """Represents the final question that the players may ask.
 
         Returns:
-            the player object
-
+            boolean: did they guess the celebrity correctly
         """
-        response = input("Enter your celebrity guess:")
+        response = input("Enter your celebrity guess:").upper()
         return (response == self.players[player].assigned_celebrity)
         
         
@@ -132,20 +135,23 @@ class GuessWho:
     def turn(self, player):
         """This method represents the turns between each player.
 
-        Raises:
-            ValueError for invalid question type.
         """
-        #represents one players turn
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb")
+        
+        #Invalid response will call the method again for the same player
+        if question_type != "0" | question_type != "1":
+            self.turn(player)
+         
+        #call trait question method   
         if question_type == "0":
-            #call trait question method
             self.trait_q(player)
+            player = abs(player - 1)
+            self.turn(player)
+            
         else:
             #call final question method
             self.winner(player)
         
-        if question_type != "0" | question_type != "1":
-            raise ValueError("Sorry, please input a 0 or a 1")
         
     def winner(self, player):
         """This method determines who wins in the game, if any player guesses the celebrity correctly.
@@ -153,14 +159,22 @@ class GuessWho:
         Side effects:
             prints if either player1 wins, player2 wins, or if both players lose
         """
+        
+        #Player whose turn it guessing the final celeb
         curr_player = self.players[player]
         if self.final_q(player):
             print(f"{str(curr_player)} wins with the guess of {curr_player.assigned_celebrity}!")
-            
-        elif self.final_q(player):
-            print(f"{player2} wins with the guess of {player2.assigned_celebrity}!")
+        
+        #Changes to the next player to guess
         else:
-            print(f"{player1} and {player2} both lost!")
+            curr_player = self.players[abs(player - 1)]
+            if self.final_q(player):
+                print(f"{str(curr_player)} wins with the guess of {curr_player.assigned_celebrity}!") 
+                 
+            #Neither player guessed correctly, both lost
+            else:
+                print(f"{self.players[0]} and {self.players[1]} both lost!")
+
 
 def parse_args(arglist):
     """Parse command-line arguments. 
