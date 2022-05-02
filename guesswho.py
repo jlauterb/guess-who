@@ -166,7 +166,9 @@ class GuessWho:
                 del temp_brd[celebs]
         self.players[player].board = temp_brd
 
-            
+    def print_board(self, player):
+        print(self.players[player].board.keys())
+              
         
     
     def turn(self, player):
@@ -181,6 +183,7 @@ class GuessWho:
          
         #call trait question method   
         if question_type == "0":
+            self.print_board(player)
             self.trait_q(player)
             player = abs(player - 1)
             self.turn(player)
@@ -188,6 +191,8 @@ class GuessWho:
         else:
             #call final question method
             self.winner(player)
+        
+        
         
         
     def winner(self, player):
