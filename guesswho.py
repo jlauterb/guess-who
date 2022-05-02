@@ -129,7 +129,27 @@ class GuessWho:
         Returns:
             the player object
         """
-        
+        category_response = input("Pick a category: Industry, Facial Hair, " +
+                "Presenting, Eye Color, Hair Color, Hair Length, Controversy, "
+                + "and Height").upper()
+        if category_response == "INDUSTRY":
+            choice_response = input("Pick a choice: Music, "
+                                    + "Reality, Acting").upper()
+        elif category_response == "FACIAL HAIR":
+            choice_response = input("Pick a choice: No Facial Hair, Beard, Goatee").upper()
+        elif category_response == "PRESENTING":
+            choice_response = input("Pick a choice: MALE, FEMALE").upper()
+        elif category_response == "EYE COLOR":
+            choice_response = input("Pick a choice: Brown, Hazel, Green, Blue, Black").upper()
+        elif category_response == "HAIR COLOR":
+            choice_response = input("Pick a choice: Black, Brown, Blond, Ginger").upper()
+        elif category_response == "HAIR LENGTH":
+            choice_response = input("Pick a choice: Short, Medium, Long").upper()
+        elif category_response == "CONTROVERSY":
+            choice_response = input("Pick a choice: Controversial, Not Controversial").upper()
+        elif category_response == "HEIGHT":
+            choice_response = input("Pick a choice: Short, Average, Tall").upper()
+            
         return player
     
     def turn(self, player):
