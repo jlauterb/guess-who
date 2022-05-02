@@ -157,8 +157,16 @@ class GuessWho:
         elif category_response == "HEIGHT":
             choice_response = input("Pick a choice: Short, Average, Tall").upper()
             category_response = 7
+        
+        temp_brd = self.players[player].board
+        for celebs in self.players[player].board:
+            value = temp_brd.get(celebs)
+            if value[category_response] == choice_response:
+                del temp_brd[celebs]
+        self.player[player].board = temp_brd
+
             
-        return player
+        
     
     def turn(self, player):
         """This method represents the turns between each player.
