@@ -20,13 +20,13 @@ class Board():
         self.board = {}
         #Hopefully, this will turn a csv file into a dict where the first column is a key,
         #The rest of the columns will turn into 1 tuple as the value of the key.
-        #with open(filename, newline = ' ') as file:
-        reader = csv.reader(filename)
-        for row in reader:
-            name = row.pop(0)
-            data = tuple()
-            [data.add(col) for col in row]
-        self.board[name] = data
+        with open(filename, mode='r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                name = row.pop(0)
+                data = tuple()
+                [data.add(col) for col in row]
+                self.board[name] = data
         print(self.greeting())
         
     
