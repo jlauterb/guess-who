@@ -24,8 +24,8 @@ class Board():
             reader = csv.reader(file)
             for row in reader:
                 name = row.pop(0)
-                data = tuple()
-                [data.add(col) for col in row]
+                data = []
+                [data.append(col) for col in row]
                 self.board[name] = data
         print(self.greeting())
         
@@ -159,12 +159,12 @@ class GuessWho:
             choice_response = input("Pick a choice (Short, Average, Tall): ").upper()
             category_response = 7
         
-        temp_brd = self.players[player].board
+        temp_brd = self.players[player].board.copy()
         for celebs in self.players[player].board:
             value = temp_brd.get(celebs)
             if value[category_response] == choice_response:
                 del temp_brd[celebs]
-        self.player[player].board = temp_brd
+        self.players[player].board = temp_brd
 
             
         
