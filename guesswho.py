@@ -27,6 +27,8 @@ class Board():
                 data = tuple()
                 [data.add(col) for col in row]
             self.brd[name] = data
+        print(self.greeting())
+        
     
     def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end="!"):
         """greets the players at the start of the game.
@@ -46,8 +48,6 @@ class Board():
     def __str__(self):
         return str(self.brd.keys)
 
-
-    print(greeting())
 
             
         
@@ -229,7 +229,7 @@ def parse_args(arglist):
 if __name__ == "__main__":
     #Line to run the program
     
-    args = parse_args(sys.args[1:])
+    args = parse_args(sys.argv[1:])
     
     celebs = Board(args)
     
