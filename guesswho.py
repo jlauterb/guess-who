@@ -182,9 +182,6 @@ class GuessWho:
         """
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb): ")
         
-        #Invalid response will call the method again for the same player
-        #if (question_type != "0" or question_type != "1"):
-           # self.turn(player)
          
         #call trait question method   
         if question_type == "0":
@@ -193,9 +190,12 @@ class GuessWho:
             player = abs(player - 1)
             self.turn(player)
             
-        else:
+        if question_type == "1":
             #call final question method
             self.winner(player)
+        else: 
+            #Invalid response will call the method again for the same player
+            print("Invalid input! Please enter 0 or 1!")
         
         
         
