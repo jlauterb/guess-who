@@ -220,7 +220,9 @@ class GuessWho:
                  
             #Neither player guessed correctly, both lost
             else:
-                print(f"{self.players[0]} and {self.players[1]} both lost!")
+                print(f"{self.players[0]} and {self.players[1]} both lost!") 
+                print(f"{self.players[0]}'s celebrity was: {self.players[0].assigned_celebrity}")
+                print(f"{self.players[1]}'s celebrity was: {self.players[1].assigned_celebrity}")
 
 
 def parse_args(arglist):
