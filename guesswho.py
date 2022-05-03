@@ -147,7 +147,7 @@ class GuessWho:
             choice_response = input("Pick a choice (Brown, Hazel, Green, Blue, Black): ").upper()
             category_response = 3
         elif category_response == "HAIR COLOR":
-            choice_response = input("Pick a choice (Black, Brown, Blond, Ginger): ").upper()
+            choice_response = input("Pick a choice (Black, Brown, Blonde, Ginger): ").upper()
             category_response = 4
         elif category_response == "HAIR LENGTH":
             choice_response = input("Pick a choice (Short, Medium, Long): ").upper()
@@ -163,8 +163,18 @@ class GuessWho:
         for celebs in self.players[player].board:
             if (choice_response == self.players[player].assigned_celebrity_values[category_response]) and (self.players[player].board[celebs][category_response] == choice_response):
         self.players[player].board = temp_brd
+        
+        if value[category_response] == choice_response:
+            print (f"Yes! Your celebrity has this trait: {choice_response}")
+        else:
+            print (f"No, your celebrity does not have this trait: {choice_response}")
 
     def print_board(self, player):
+        """ This method prints the player's board
+        
+        Side effects:
+            The player's board is printed
+        """
         print(self.players[player].board.keys())
               
         
@@ -175,9 +185,6 @@ class GuessWho:
         """
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb): ")
         
-        #Invalid response will call the method again for the same player
-        #if (question_type != "0" or question_type != "1"):
-           # self.turn(player)
          
         #call trait question method   
         if question_type == "0":
@@ -186,9 +193,12 @@ class GuessWho:
             player = abs(player - 1)
             self.turn(player)
             
-        else:
+        if question_type == "1":
             #call final question method
             self.winner(player)
+        else: 
+            #Invalid response will call the method again for the same player
+            print("Invalid input! Please enter 0 or 1!")
         
         
         
@@ -213,7 +223,9 @@ class GuessWho:
                  
             #Neither player guessed correctly, both lost
             else:
-                print(f"{self.players[0]} and {self.players[1]} both lost!")
+                print(f"{self.players[0]} and {self.players[1]} both lost!") 
+                print(f"{self.players[0]}'s celebrity was: {self.players[0].assigned_celebrity}")
+                print(f"{self.players[1]}'s celebrity was: {self.players[1].assigned_celebrity}")
 
 
 def parse_args(arglist):
