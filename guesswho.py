@@ -165,6 +165,11 @@ class GuessWho:
             if value[category_response] == choice_response:
                 del temp_brd[celebs]
         self.players[player].board = temp_brd
+        
+        if value[category_response] == choice_response:
+            print (f"Yes! Your celebrity has this trait: {choice_response}")
+        else:
+            print (f"No, your celebrity does not have this trait: {choice_response}")
 
     def print_board(self, player):
         """ This method prints the player's board
