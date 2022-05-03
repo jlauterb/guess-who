@@ -159,15 +159,33 @@ class GuessWho:
             choice_response = input("Pick a choice (Short, Average, Tall): ").upper()
             category_response = 7
         
+        #Attribute of the player's celebrity that they are try to guess
+        celeb_value = self.players[player].assigned_celebrity_values[category_response]
+        
+        #A temporary board used to delete any of the celebrities that do not have the attribute of the assigned celebrity
         temp_brd = self.players[player].board.copy()
-        for celebs in self.players[player].board:
-            if (choice_response == self.players[player].assigned_celebrity_values[category_response]) and (self.players[player].board[celebs][category_response] == choice_response):
+        
+        #Loop through all the celebrities left in the current players board
+        for celeb in self.players[player].board:
+            
+            #Get the list of attributes from the current celebrity
+            attributes = self.players[player].board[celeb]
+            
+            #If the player correctly guessed the attribute that the assigned celebrity has, then remove all the celebrities that do not have that attribute
+            if (choice_response == celeb_value):
+                if (attributes[category_response] != choice_response):
+                    del temp_brd[celeb]
+            
+            #If the player incorrectly guess the attribute that the assigned celebrity has, then remove all the celebrities that have that attribute
+            else:
+                if (attributes[category_response] == choice_response):
+                    del temp_brd[celeb]
+                    
+        #Set the current player's board to the modified board
         self.players[player].board = temp_brd
         
-        if value[category_response] == choice_response:
-            print (f"Yes! Your celebrity has this trait: {choice_response}")
-        else:
-            print (f"No, your celebrity does not have this trait: {choice_response}")
+        #Print the new board
+        self.print_board(player)
 
     def print_board(self, player):
         """ This method prints the player's board
@@ -175,7 +193,9 @@ class GuessWho:
         Side effects:
             The player's board is printed
         """
+        print(f"It is {str(self.players[player])} turn!")
         print(self.players[player].board.keys())
+        print("\n")
               
         
     
@@ -183,22 +203,26 @@ class GuessWho:
         """This method represents the turns between each player.
 
         """
+        
+        self.print_board(player)
+        
         question_type = input("What type of question would you like to ask? (type 0 to guess a trait, 1 to guess a celeb): ")
         
          
         #call trait question method   
         if question_type == "0":
-            self.print_board(player)
             self.trait_q(player)
             player = abs(player - 1)
             self.turn(player)
             
-        if question_type == "1":
+        elif question_type == "1":
             #call final question method
             self.winner(player)
+            
         else: 
             #Invalid response will call the method again for the same player
             print("Invalid input! Please enter 0 or 1!")
+            self.turn(player)
         
         
         
@@ -212,12 +236,17 @@ class GuessWho:
         
         #Player whose turn it guessing the final celeb
         curr_player = self.players[player]
+        self.print_board(player)
+        
+    
         if self.final_q(player):
             print(f"{str(curr_player)} wins with the guess of {curr_player.assigned_celebrity}!")
         
         #Changes to the next player to guess
         else:
-            curr_player = self.players[abs(player - 1)]
+            player = abs(player - 1)
+            curr_player = self.players[player]
+            self.print_board(player)
             if self.final_q(player):
                 print(f"{str(curr_player)} wins with the guess of {curr_player.assigned_celebrity}!") 
                  
