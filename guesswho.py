@@ -27,7 +27,7 @@ class Board():
                 data = []
                 [data.append(col) for col in row]
                 self.board[name] = data
-        print(self.greeting())
+        self.greeting()
         
     
     def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end="!"):
@@ -76,10 +76,10 @@ class Player():
         self.name = name
         #Board from Board class
         self.board = board
-        #Player's list of celebrities it could not be
-        self.rejected = []
         #Player's celebrity that another player will try to guess
-        self.assigned_celebrity = random.choice(list(self.board.keys()))
+        self.assigned_celebrity = str(random.choice(list(self.board.keys())))
+        #Celebrities values
+        self.assigned_celebrity_values = self.board[self.assigned_celebrity]
         
         
     def __str__(self):
@@ -161,9 +161,7 @@ class GuessWho:
         
         temp_brd = self.players[player].board.copy()
         for celebs in self.players[player].board:
-            value = temp_brd.get(celebs)
-            if value[category_response] == choice_response:
-                del temp_brd[celebs]
+            if (choice_response == self.players[player].assigned_celebrity_values[category_response]) and (self.players[player].board[celebs][category_response] == choice_response):
         self.players[player].board = temp_brd
 
     def print_board(self, player):
@@ -238,7 +236,6 @@ if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     
     celebs = Board(args.filepath)
-    print(celebs.board)
     player1 = Player(input("Player 1 enter your name: \n"),celebs.board)
     player2 = Player(input("Player 2 enter your name: \n"),celebs.board)
     GuessWho(player1, player2)
