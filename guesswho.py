@@ -193,8 +193,8 @@ class GuessWho:
         Side effects:
             The player's board is printed
         """
-        print(f"{str(self.players[player])} Board: ")
-        print(self.players[player].board.keys())
+        print(f"It is {str(self.players[player])} turn!")
+        [print(k) for k in (self.players[player].board.keys())]
         print("\n")
               
         
