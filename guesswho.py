@@ -194,7 +194,7 @@ class GuessWho:
             The player's board is printed
         """
         print(f"It is {str(self.players[player])} turn!")
-        print(self.players[player].board.keys())
+        [print(k) for k in (self.players[player].board.keys())]
         print("\n")
               
         
