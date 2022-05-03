@@ -22,6 +22,7 @@ class Board():
         #The rest of the columns will turn into 1 tuple as the value of the key.
         with open(filename, mode='r') as file:
             reader = csv.reader(file)
+            reader = sorted(reader, key = lambda row: row[0])
             for row in reader:
                 name = row.pop(0)
                 data = []
