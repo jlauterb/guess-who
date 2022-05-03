@@ -147,7 +147,7 @@ class GuessWho:
             choice_response = input("Pick a choice (Brown, Hazel, Green, Blue, Black): ").upper()
             category_response = 3
         elif category_response == "HAIR COLOR":
-            choice_response = input("Pick a choice (Black, Brown, Blond, Ginger): ").upper()
+            choice_response = input("Pick a choice (Black, Brown, Blonde, Ginger): ").upper()
             category_response = 4
         elif category_response == "HAIR LENGTH":
             choice_response = input("Pick a choice (Short, Medium, Long): ").upper()
