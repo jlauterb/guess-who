@@ -167,6 +167,11 @@ class GuessWho:
         self.players[player].board = temp_brd
 
     def print_board(self, player):
+        """ This method prints the player's board
+        
+        Side effects:
+            The player's board is printed
+        """
         print(self.players[player].board.keys())
               
         
