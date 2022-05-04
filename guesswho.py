@@ -176,7 +176,7 @@ class GuessWho:
             if (choice_response == celeb_value):
                 if (attributes[category_response] != choice_response):
                     del temp_brd[celeb]
-            
+                          
             #If the player incorrectly guess the attribute that the assigned celebrity has, then remove all the celebrities that have that attribute
             else:
                 if (attributes[category_response] == choice_response):
