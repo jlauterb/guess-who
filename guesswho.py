@@ -22,6 +22,7 @@ class Board():
         #The rest of the columns will turn into 1 tuple as the value of the key.
         with open(filename, mode='r') as file:
             reader = csv.reader(file)
+            reader = sorted(reader, key = lambda row: row[0])
             for row in reader:
                 name = row.pop(0)
                 data = []
@@ -177,6 +178,10 @@ class GuessWho:
                 #if (attributes[category_response] != choice_response):
                     #del temp_brd[celeb]
             
+            if (choice_response == celeb_value):
+                if (attributes[category_response] != choice_response):
+                    del temp_brd[celeb]
+                          
             #If the player incorrectly guess the attribute that the assigned celebrity has, then remove all the celebrities that have that attribute
             #else:
                 #if (attributes[category_response] == choice_response):
@@ -196,7 +201,9 @@ class GuessWho:
         Side effects:
             The player's board is printed
         """
+        print("\n")
         print(f"It is {str(self.players[player])}'s turn! \n")
+        print("These are the celebrities: ")
         [print(k) for k in (self.players[player].board.keys())]
         print("\n")
               
