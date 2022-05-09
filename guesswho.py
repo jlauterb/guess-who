@@ -31,19 +31,19 @@ class Board():
         self.greeting()
         
     
-    def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end="!"):
+    def greeting(self, game="Guess Who", coders="John, Sierra, Janet, and Sana", end=":)"):
         """greets the players at the start of the game.
 
         Args:
             game(str): the name of the game
-            end(str): ends the print statement with an exclamation mark
+            end(str): ends the print statement with a smiley face
             coders(str): the names of the people in our group
             
         Side effects:
             a greeting to begin the game
 
         """
-        print("Hello, and welcome to the game of", game, "coded by", coders)
+        print("Hello, and welcome to the game of", game, "coded by", coders, end)
         
         
     def __str__(self):
