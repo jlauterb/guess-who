@@ -174,20 +174,18 @@ class GuessWho:
             attributes = self.players[player].board[celeb]
             
             #If the player correctly guessed the attribute that the assigned celebrity has, then remove all the celebrities that do not have that attribute
-            #if (choice_response == celeb_value):
-                #if (attributes[category_response] != choice_response):
-                    #del temp_brd[celeb]
-            
             if (choice_response == celeb_value):
+                if (attributes[category_response] != choice_response):
+                    del temp_brd[celeb]
+            
+            #if (choice_response == celeb_value):
                 if (attributes[category_response] != choice_response):
                     del temp_brd[celeb]
                           
             #If the player incorrectly guess the attribute that the assigned celebrity has, then remove all the celebrities that have that attribute
-            #else:
-                #if (attributes[category_response] == choice_response):
-                    #del temp_brd[celeb]
-            del temp_brd[celeb] if (choice_response == celeb_value & if (attributes[category_response] != choice_response) else
-            del temp_brd[celeb] if (attributes[category_response] == choice_response)
+            else:
+                if (attributes[category_response] == choice_response):
+                    del temp_brd[celeb]
                     
         #Set the current player's board to the modified board
         self.players[player].board = temp_brd
