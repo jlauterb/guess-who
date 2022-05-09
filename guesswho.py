@@ -124,7 +124,7 @@ class GuessWho:
         """
         response = input("Enter your celebrity guess:").upper()
         return (response == self.players[player].assigned_celebrity)
-        
+    
         
     def trait_q(self, player):
         """Questions related to traits that the celebrities may have.
@@ -209,6 +209,9 @@ class GuessWho:
     
     def turn(self, player):
         """This method represents the turns between each player.
+        
+        Side effects:
+            A message is printed asking the users if they'd like to guess a trait or guess a celebrity's name.
 
         """
         
