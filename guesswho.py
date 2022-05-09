@@ -289,5 +289,7 @@ if __name__ == "__main__":
     
     celebs = Board(args.filepath)
     player1 = Player(input("Player 1 enter your name: \n"),celebs.board)
+    player_number = 2
+    print("What a lovely name! What about you, player 2?" if player_number == 2 else "I didn’t get your name.")
     player2 = Player(input("Player 2 enter your name: \n"),celebs.board)
     GuessWho(player1, player2)
