@@ -16,6 +16,9 @@ class Board():
 
         Args:
             filename (str): File path to csv file
+        
+        Side effects:
+            opens the file
         """
         self.board = {}
         #Hopefully, this will turn a csv file into a dict where the first column is a key,
@@ -47,6 +50,11 @@ class Board():
         
         
     def __str__(self):
+        """represents the class object as a string.
+        
+        Returns:
+            returns the string
+        """
         return str(self.brd.keys)
     
 
@@ -283,7 +291,12 @@ def parse_args(arglist):
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
-    #Line to run the program
+    """Statement that runs the program
+    
+    Side effects:
+        prints statements asking the players for their names
+    """
+    
     
     args = parse_args(sys.argv[1:])
     
